@@ -3,7 +3,7 @@
 
 // init project
 var express = require('express');
-const headerParser = require('header-parser')
+
 
 var app = express();
 
@@ -16,6 +16,7 @@ app.use(cors({optionSuccessStatus: 200}));  // some legacy browsers choke on 204
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
+
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
@@ -24,7 +25,10 @@ app.get("/", function (req, res) {
 
 // your first API endpoint... 
 app.get("/api/whoami", function (req, res) {
-  res.json({ipdaress: req.ip});
+  const ipaddress = req.ip
+ // const language = req.headers.accept-language
+  console.log(req.headers)
+  //res.json({ipdaress: req.ip});
 });
 
 
